@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Trace Visualizer</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero panel">
+        <div>
+          <p class="eyebrow">Minimal Agent Runtime</p>
+          <h1>Agent 操作可视化控制台</h1>
+          <p class="subtitle">把对话、LLM 推理动作、工具调用、任务状态和持久化 Session 串成一条可审计时间线。</p>
+        </div>
+        <div class="hero-card">
+          <span class="pulse"></span>
+          <strong id="statusText">在线</strong>
+          <small>DeepSeek API · Session Trace · Tools</small>
+        </div>
+      </section>
+
+      <section class="composer panel">
+        <label class="field compact">
+          <span>Session</span>
+          <input id="sessionInput" value="default" autocomplete="off" />
+        </label>
+        <label class="field grow">
+          <span>发送给 Agent</span>
+          <textarea id="messageInput" rows="3" placeholder="例如：帮我计算 (12+8)*3，并创建一个待办记录结果"></textarea>
+        </label>
+        <button id="sendButton">运行一轮</button>
+      </section>
+
+      <section class="layout">
+        <aside class="panel sidebar">
+          <div class="metric-grid">
+            <article class="metric">
+              <span>消息</span>
+              <strong id="messageCount">0</strong>
+            </article>
+            <article class="metric">
+              <span>Trace</span>
+              <strong id="traceCount">0</strong>
+            </article>
+            <article class="metric">
+              <span>工具</span>
+              <strong id="toolCount">0</strong>
+            </article>
+            <article class="metric">
+              <span>任务</span>
+              <strong id="taskCount">0</strong>
+            </article>
+          </div>
+
+          <div class="section-title">
+            <h2>任务状态</h2>
+            <button class="ghost" id="refreshButton">刷新</button>
+          </div>
+          <div id="tasks" class="task-list empty-state">暂无任务</div>
+
+          <div class="section-title compact-title">
+            <h2>工具图例</h2>
+          </div>
+          <div class="legend">
+            <span><i class="dot llm"></i>LLM 动作</span>
+            <span><i class="dot tool"></i>工具调用</span>
+            <span><i class="dot error"></i>异常</span>
+          </div>
+        </aside>
+
+        <section class="panel chat-panel">
+          <div class="section-title">
+            <h2>对话流</h2>
+            <span id="lastAnswer" class="answer-chip">等待输入</span>
+          </div>
+          <div id="messages" class="messages empty-state">暂无对话，发送一条消息开始。</div>
+        </section>
+
+        <section class="panel trace-panel">
+          <div class="section-title">
+            <h2>执行时间线</h2>
+            <span class="answer-chip">LLM → Tool → Observation</span>
+          </div>
+          <div id="traces" class="timeline empty-state">暂无 trace</div>
+        </section>
+      </section>
+    </main>
+
+    <template id="messageTemplate">
+      <article class="message-card">
+        <div class="avatar"></div>
+        <div>
+          <header></header>
+          <p></p>
+        </div>
+      </article>
+    </template>
+
+    <template id="traceTemplate">
+      <article class="trace-card">
+        <div class="trace-marker"></div>
+        <div class="trace-body">
+          <header>
+            <strong></strong>
+            <span></span>
+          </header>
+          <div class="trace-summary"></div>
+          <pre></pre>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

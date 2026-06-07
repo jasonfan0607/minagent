@@ -1,0 +1,9 @@
+.env
+.agent_data/
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env.local
+.DS_Store
