@@ -143,14 +143,25 @@ Get-Content .agent_data\sessions\demo.json
 
 ## 网页运行截图
 
-截图内容已整合在网页操作录屏中，录屏重点展示：
+### 多步循环 Trace：STEP 1-2
 
-- 多步 Agent 循环：`LLM → Tool → LLM` 持续执行，直到最终答案或最大步数限制。
-- 工具调用 trace：包括 `read_docs`、`todo` 等工具的 action、args、result。
-- 最大步数限制：复杂任务超过 `AGENT_MAX_STEPS=6` 后返回兜底说明。
-- 前端可视化效果：对话流、任务状态、工具计数、执行时间线和 trace JSON。
+![多步循环 Trace STEP 1-2](./assets/screenshots/trace-steps-1-2.png)
 
-如需在 README 中直接展示截图，可将截图保存到 `assets/screenshots/` 后再添加图片引用。
+### 多步循环 Trace：STEP 3-4
+
+![多步循环 Trace STEP 3-4](./assets/screenshots/trace-steps-3-4.png)
+
+### 工具调用 Trace：todo 创建任务
+
+![工具调用 Trace todo](./assets/screenshots/trace-todo-create.png)
+
+### 最大步数限制 Trace
+
+![最大步数限制 Trace](./assets/screenshots/trace-max-steps.png)
+
+### 最大步数限制最终回答
+
+![最大步数限制最终回答](./assets/screenshots/max-steps-answer.png)
 
 ## 前端页面测试方式
 
