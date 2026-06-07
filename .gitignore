@@ -1,5 +1,6 @@
 .env
 .agent_data/
+*.mp4
 __pycache__/
 *.py[cod]
 *$py.class

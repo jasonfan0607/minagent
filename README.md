@@ -5,7 +5,7 @@
 ## 提交材料
 
 - 代码链接：将本项目推送到 GitHub / Gitee / GitLab 后提交仓库地址。
-- 网页操作录屏：[2026-06-07 12-03-26.mp4](./2026-06-07%2012-03-26.mp4)
+- 网页操作录屏：[点击查看演示视频](https://github.com/jasonfan0607/minagent/releases/download/Video/2026-06-07.12-03-26.mp4)
 - README：本文档包含运行方式、系统设计、memory 的召回时机与放置方式说明。
 - AI Prompt 与问题解决记录：[AI_PROMPTS_AND_NOTES.md](./AI_PROMPTS_AND_NOTES.md)
 
@@ -48,7 +48,6 @@
 │   ├── index.html      # 可视化页面结构
 │   ├── styles.css      # 页面样式
 │   └── app.js          # 页面交互逻辑
-├── 2026-06-07 12-03-26.mp4   # 网页操作录屏
 ├── .env.example        # 环境变量模板
 ├── requirements.txt    # 无第三方运行依赖
 ├── README.md
@@ -129,7 +128,7 @@ Get-Content .agent_data\sessions\demo.json
 
 录屏文件：
 
-[点击查看网页操作录屏](./2026-06-07%2012-03-26.mp4)
+[点击查看网页操作录屏](https://github.com/jasonfan0607/minagent/releases/download/Video/2026-06-07.12-03-26.mp4)
 
 录屏展示内容建议包括：
 
@@ -144,30 +143,14 @@ Get-Content .agent_data\sessions\demo.json
 
 ## 网页运行截图
 
-以下截图展示了前端可视化页面中的多步 Agent 循环、工具调用 trace、最大步数限制和最终回答效果。
+截图内容已整合在网页操作录屏中，录屏重点展示：
 
-> 请将对应截图保存到 `assets/screenshots/` 目录后，README 会自动显示这些图片。
+- 多步 Agent 循环：`LLM → Tool → LLM` 持续执行，直到最终答案或最大步数限制。
+- 工具调用 trace：包括 `read_docs`、`todo` 等工具的 action、args、result。
+- 最大步数限制：复杂任务超过 `AGENT_MAX_STEPS=6` 后返回兜底说明。
+- 前端可视化效果：对话流、任务状态、工具计数、执行时间线和 trace JSON。
 
-
-### 最大步数限制最终回答
-
-![最大步数限制最终回答](./assets/screenshots/max-steps-answer.png)
-
-### 多步循环 Trace：STEP 1-2
-
-![多步循环 Trace STEP 1-2](./assets/screenshots/trace-steps-1-2.png)
-
-### 多步循环 Trace：STEP 3-4
-
-![多步循环 Trace STEP 3-4](./assets/screenshots/trace-steps-3-4.png)
-
-### 工具调用 Trace：todo 创建任务
-
-![工具调用 Trace todo](./assets/screenshots/trace-todo-create.png)
-
-### 最大步数限制 Trace
-
-![最大步数限制 Trace](./assets/screenshots/trace-max-steps.png)
+如需在 README 中直接展示截图，可将截图保存到 `assets/screenshots/` 后再添加图片引用。
 
 ## 前端页面测试方式
 
